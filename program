@@ -1,0 +1,42 @@
+using System;
+
+namespace Kandydat_na_studia
+{
+    class Program
+    {
+        struct KandydatNaStudia
+        {
+            string imie, nazwisko;
+            int punktyMatematyka, punktyInformatyka,punktyJezykObcy;
+
+            public KandydatNaStudia(string im, string naz, int pktMat, int pktInf, int pktJO)
+            {
+                imie = im;
+                nazwisko = naz;
+                punktyMatematyka = pktMat;
+                punktyInformatyka = pktInf;
+                punktyJezykObcy = pktJO;
+            }
+            public double sumaPunktow()
+            {
+                return (0.6 * punktyMatematyka) + (0.5 * punktyInformatyka) + (0.2 * punktyJezykObcy);
+            }
+            public override string ToString()
+            {
+                return $"{nazwisko,-10}{imie,-20} Punkty: ";
+            }
+        }
+        static void Main(string[] args)
+        {
+            KandydatNaStudia[] tablica = new KandydatNaStudia[3];
+            tablica[0] = new KandydatNaStudia ("Pudzianowski", "Mariusz", 90, 60, 30);
+            tablica[1] = new KandydatNaStudia("Błachowicz", "Jan", 50, 45, 90);
+            tablica[2] = new KandydatNaStudia("Piłsudzki", "Józef", 100, 65, 74);
+            foreach(KandydatNaStudia x in tablica)
+            {
+                Console.WriteLine(x.ToString() + x.sumaPunktow());
+            }
+            Console.ReadKey();
+        }
+    }
+}
